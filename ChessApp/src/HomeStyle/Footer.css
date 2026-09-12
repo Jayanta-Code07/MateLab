@@ -1,0 +1,15 @@
+
+
+.footer-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-btn{
+    background-color: transparent;
+    border: none;
+    color: #d6d6d2;
+    cursor: pointer;
+}

@@ -1,0 +1,29 @@
+
+
+.signup-btn {
+    width: 90%;
+    text-transform: none !important;
+
+    background: linear-gradient(
+        to bottom,
+        #ff5545 0%,
+        #ff3b30 35%,
+        #f02f24 100%
+    );
+
+    color: white;
+    box-shadow: 0 3px 12px rgba(255, 59, 48, 0.4);
+}
+
+.signup-btn:hover {
+    background: linear-gradient(
+        to bottom,
+        #ff6658 0%,
+        #ff3b30 35%,
+        #ff3024 100%
+    );
+
+    box-shadow:
+        0 0 8px rgba(255, 59, 48, 0.65),
+        0 4px 16px rgba(255, 59, 48, 0.5);
+}

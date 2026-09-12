@@ -1,0 +1,17 @@
+
+
+.Left-Hero {
+    height: 100%;
+    width: 50%;
+    padding: 20px 0 0 30px !important;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Hero-video{
+    height: 100%;
+    border-radius: 20px;
+}

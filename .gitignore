@@ -1,0 +1,9 @@
+ChessApp/node_modules/
+Backend/node_modules/
+
+ChessApp/.env
+Backend/.env
+
+ChessEngine/*.exe
+ChessEngine/*.o
+ChessEngine/*.obj

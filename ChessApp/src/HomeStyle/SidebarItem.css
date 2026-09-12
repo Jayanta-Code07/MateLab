@@ -1,0 +1,69 @@
+
+
+/* Sidebar item */
+.SidebarItem {
+    width: 100%;
+}
+
+/* Button */
+.SidebarItemButton {
+    min-height: 44px !important;
+    padding: 8px 14px !important;
+    margin: 2px 8px !important;
+    border-radius: 8px !important;
+
+    color: #d6d6d2 !important;
+
+    transition: background-color 0.2s ease,
+                color 0.2s ease;
+}
+
+/* Icon wrapper */
+.SidebarItemIcon {
+    min-width: 38px !important;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* SVG/Image */
+.ItemIcon {
+    width: 28px !important;
+    height: 28px !important;
+
+    object-fit: contain;
+    display: block;
+
+    border-radius: 5px;
+}
+
+/* Text */
+.SidebarItemText {
+    margin-left: 2px !important;
+}
+
+.SidebarItemText .MuiTypography-root {
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    color: #d6d6d2 !important;
+}
+
+/* Hover */
+.SidebarItemButton:hover {
+    background-color: #343431 !important;
+    color: #ffffff !important;
+}
+
+.SidebarItemButton:hover .SidebarItemText .MuiTypography-root {
+    color: #ffffff !important;
+}
+
+/* Active/selected item */
+.SidebarItemButton.active {
+    background-color: #3b3b37 !important;
+}
+
+.SidebarItemButton.active .MuiTypography-root {
+    color: #ffffff !important;
+}
