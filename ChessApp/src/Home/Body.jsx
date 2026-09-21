@@ -49,25 +49,25 @@ export default function Body(){
     return (
         <Box className="home-page-body">
 
-            <Box className="hero-section" >
+            <Box className="hero-section animate__animated animate__zoomIn" >
                 <LeftHero Compo={<TopLeftCompo/>} />
                 <RightHero Compo={<TopRightCompo Text={HeroText} other={false} btnName={"Get Started"} stIcon={null} />} />
             </Box>
-            <Box className="hero-section" >
+            <Box className="hero-section animate__animated animate__zoomIn" >
                 <LeftHero Compo={<TopRightCompo Text={LessonText} other={true} btnName={"Start Lesson"} stIcon={LearnIconStatic} />} />
                 <RightHero Compo={<LessonRightCompo imeg={LessonImg} />} />
             </Box>
-            <Box className="hero-section" >
+            <Box className="hero-section animate__animated animate__zoomIn" >
                 <LeftHero Compo={<LessonRightCompo imeg={BotIcon} />} />
                 <RightHero Compo={<TopRightCompo Text={BotText} other={true} btnName={"Challenge our Ai"} stIcon={BotBtn} />} />
             </Box>
-            <Box className="hero-section" >
+            <Box className="hero-section animate__animated animate__zoomIn" >
                 <LeftHero Compo={<TopRightCompo Text={PuzzelText} other={true} btnName={"Solve Puzzels"} stIcon={PuzzelBtn} />} />
                 <RightHero Compo={<LessonRightCompo imeg={PuzzelHero} />} />
             </Box>
 
             <Box sx={{ display:"flex", justifyContent:"center" }} >
-            <Box className="Hero-Footer" >
+            <Box className="Hero-Footer animate__animated animate__zoomIn " >
                 <Typography className="Hero-Text-Primary" >Learn, Play, and Have Fun!</Typography>
                 <StartButton />
             </Box>

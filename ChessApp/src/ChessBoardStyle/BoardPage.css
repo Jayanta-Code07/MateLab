@@ -1,4 +1,11 @@
+/* =========================================================
+   MateLab - Board Page
+   Reference-style Chess Play Layout
+   ========================================================= */
 
+* {
+    box-sizing: border-box;
+}
 
 /* html,
 body,
@@ -6,158 +13,706 @@ body,
     width: 100%;
     height: 100%;
     margin: 0;
+    padding: 0;
     overflow: hidden;
 } */
 
+body {
+    background: #0D0D0D;
+    color: #F5F5F5;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-#root{
+
+/* =========================================================
+   MAIN PAGE
+   ========================================================= */
+
+.Board-page-container {
     width: 100%;
     height: 100vh;
+    min-height: 0;
+
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+
+    background: #0D0D0D;
+
+    overflow: hidden;
 }
 
-.Board-body {
-    width: min(90vw, 90vh);
-    aspect-ratio: 1 / 1;
+
+/* =========================================================
+   PLAYGROUND BODY
+   ========================================================= */
+
+.Playground-Body {
+    width: 100%;
+    height: calc(100vh - 80px);
+    min-height: 0;
 
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(8, 1fr);
 
-    border: 2px solid white;
-    border-radius: 10px;
+    /*
+        Left side | Board | Right side
+
+        The center column is controlled by viewport height
+        so the chessboard remains square and fits on screen.
+    */
+
+    grid-template-columns:
+        minmax(220px, 1fr)
+        minmax(0, min(72vh, 52vw))
+        minmax(220px, 1fr);
+
+    grid-template-rows: minmax(0, 1fr);
+
+    column-gap: clamp(18px, 2vw, 38px);
+
+    padding:
+        clamp(18px, 2vh, 28px)
+        clamp(18px, 2.5vw, 46px);
+
+    align-items: stretch;
+
     overflow: hidden;
 }
 
-.square {
+
+/* =========================================================
+   LEFT SECTION
+   ========================================================= */
+
+.Player-Stats {
     width: 100%;
     height: 100%;
+    min-width: 0;
+    min-height: 0;
+
     display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
+    flex-direction: column;
 
-.chess-piece {
-    width: 85%;
-    height: 85%;
-    object-fit: contain;
-    user-select: none;
-    cursor: pointer;
+    /*
+        Important:
+        Everything starts at the same top and ends at
+        the same bottom as the center/right sections.
+    */
 
-    transition: 
-        transform 0.18s ease,
-        filter 0.18s ease;
-}
+    justify-content: flex-start;
 
-.chess-piece:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.45));
-}
+    gap: 8px;
 
-.chess-piece-deactivate{
-    width: 85%;
-    height: 85%;
-    object-fit: contain;
-    user-select: none;
-    cursor: pointer;
-}
-
-.Light {
-    background-color: #E8EBCC;
-}
-
-.Dark {
-    background-color: #92605E;
-}
-
-.source-highlight {
-    position: relative;
     overflow: hidden;
-    background: transparent !important;
 }
 
-.source-highlight::before {
-    content: "";
 
-    position: absolute;
-    inset: 0;
+/* =========================================================
+   PLAYER BOX
+   ========================================================= */
 
-    background: radial-gradient(
-        circle,
-        rgba(150, 190, 255, 0.25) 0%,
-        rgba(90, 145, 235, 0.4) 40%,
-        rgba(55, 110, 205, 0.62) 70%,
-        rgba(35, 85, 170, 0.78) 100%
-    );
+.Opponent-Box {
+    width: 100%;
+    height: 84px;
+    min-height: 70px;
 
-    transform: scale(0);
-    transform-origin: center;
+    flex-shrink: 0;
 
-    animation: sourceSpread 0.35s ease-out forwards;
+    display: flex;
+    align-items: center;
 
-    pointer-events: none;
+    padding: 0 18px;
+
+    background: #181818;
+
+    border: 2px solid #252525;
+    border-radius: 9px;
+
+    overflow: hidden;
 }
 
-@keyframes sourceSpread {
-    0% {
-        transform: scale(0);
-        opacity: 0.25;
-    }
 
-    60% {
-        transform: scale(1.12);
-        opacity: 0.75;
-    }
+/* Profile image */
 
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
+.Profile-img {
+    width: 50px;
+    height: 50px;
 
-.chess-piece {
-    position: relative;
-    z-index: 2;
-}
+    flex-shrink: 0;
 
-.chess-piece {
-    position: relative;
-    z-index: 2;
-}
-
-.chess-piece {
-    position: relative;
-    z-index: 2;
-}
-
-.chess-piece {
-    position: relative;
-    z-index: 2;
-}
-
-.attack-highlight {
-    position: relative;
-}
-
-.attack-highlight::after {
-    content: "";
-
-    position: absolute;
-
-    width: 22%;
-    height: 22%;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
+    margin-right: 16px;
 
     border-radius: 50%;
 
-    background: rgba(45, 45, 45, 0.475);
+    border: 3px solid #8B8B8B;
 
-    pointer-events: none;
+    object-fit: cover;
+}
+
+
+/* Player text */
+
+.Opponent-Box .MuiTypography-root {
+    color: #FFFFFF;
+
+    font-size: clamp(15px, 1vw, 18px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   CAPTURED PIECES BOX
+   ========================================================= */
+
+.Opponent-Capture_Box {
+    width: 100%;
+    height: 143px;
+    min-height: 115px;
+
+    flex-shrink: 0;
+
+    padding: 12px 16px;
+
+    background: #181818;
+
+    border: 2px solid #252525;
+    border-radius: 9px;
+
+    overflow: hidden;
+}
+
+
+/* Inner captured-piece section */
+
+.piece-container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+
+/* Captured pieces heading */
+
+.piece-container > .MuiTypography-root {
+    flex-shrink: 0;
+
+    color: #F5F5F5;
+
+    font-size: clamp(14px, 1vw, 17px);
+
+    margin-bottom: 8px;
+}
+
+
+/* Actual captured piece area */
+
+.Cap-Pieces {
+    width: 100%;
+    flex: 1;
+
+    min-height: 0;
+
+    background: #292929;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   GAME INFO
+   ========================================================= */
+
+.Curr-Play-Stats {
+    width: 100%;
+    min-height: 0;
+
+    flex: 1;
+
+    padding: 18px 20px;
+
+    background: #181818;
+
+    border: 2px solid #252525;
+    border-radius: 9px;
+
+    overflow: hidden;
+}
+
+
+.Curr-Play-Stats-container {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+.Curr-Play-Stats-container > .MuiTypography-root {
+    color: #F5F5F5;
+
+    font-size: clamp(15px, 1vw, 18px);
+
+    font-weight: 500;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   CENTER CHESSBOARD
+   ========================================================= */
+
+.board-container {
+    width: 100%;
+    height: 100%;
+
+    min-width: 0;
+    min-height: 0;
+
+    /*
+        Keep the board square.
+    */
+
+    aspect-ratio: 1 / 1;
+
+    justify-self: center;
+    align-self: center;
+
+    display: flex;
+    align-items: stretch;
+
+    gap: 5px;
+
+    padding:
+        8px
+        8px
+        5px
+        5px;
+
+    background: #181818;
+
+    border: 2px solid #181818;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   RANK NUMBERS
+   ========================================================= */
+
+.rankNum {
+    width: 18px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
+
+    padding-bottom: 20px;
+
+    min-height: 0;
+}
+
+
+.rankBox {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #A3A3A3;
+
+    font-size: clamp(9px, 0.8vw, 13px);
+
+    font-weight: 600;
+
+    user-select: none;
+}
+
+
+/* =========================================================
+   BOARD WRAPPER
+   ========================================================= */
+
+.board-wrapper {
+    width: 100%;
+    height: 100%;
+
+    min-width: 0;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+
+/*
+    Board.jsx root.
+
+    This makes the actual chessboard occupy all available
+    space above the file labels.
+*/
+
+.board-wrapper > *:first-child {
+    width: 100% !important;
+
+    height: auto !important;
+
+    aspect-ratio: 1 / 1;
+
+    flex: 1 1 auto;
+
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   FILE LETTERS
+   ========================================================= */
+
+.filesNum {
+    width: 100%;
+    height: 20px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+
+    margin: 0;
+}
+
+
+.fileBox {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #A3A3A3;
+
+    font-size: clamp(9px, 0.8vw, 13px);
+
+    font-weight: 600;
+
+    user-select: none;
+}
+
+
+/* =========================================================
+   RIGHT SECTION
+   ========================================================= */
+
+.Game-Stats {
+    width: 100%;
+    height: 100%;
+
+    min-width: 0;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    /*
+        Same top and bottom boundaries as the board.
+    */
+
+    justify-content: flex-start;
+
+    gap: 12px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   RIGHT SIDE PANELS
+   ========================================================= */
+
+.analytics,
+.Move-history {
+    width: 100%;
+
+    min-width: 0;
+
+    background: #181818;
+
+    border: 2px solid #252525;
+
+    border-radius: 9px;
+
+    overflow: hidden;
+}
+
+
+/*
+    Large upper panel.
+*/
+
+.analytics {
+    height: 52%;
+
+    min-height: 180px;
+
+    flex-shrink: 0;
+}
+
+
+/*
+    Smaller lower panel.
+*/
+
+.Move-history {
+    height: 30%;
+
+    min-height: 150px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   OPTIONAL TYPOGRAPHY INSIDE RIGHT PANELS
+   ========================================================= */
+
+.Game-Stats .MuiTypography-root {
+    color: #F5F5F5;
+}
+
+
+/* =========================================================
+   125% ZOOM / MEDIUM DESKTOP
+   ========================================================= */
+
+@media (max-width: 1250px) {
+
+    .Playground-Body {
+
+        grid-template-columns:
+            minmax(190px, 1fr)
+            minmax(0, min(68vh, 52vw))
+            minmax(190px, 1fr);
+
+        column-gap: 14px;
+
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+
+    .Opponent-Box {
+        height: 76px;
+    }
+
+
+    .Opponent-Capture_Box {
+        height: 125px;
+    }
+
+
+    .Profile-img {
+        width: 44px;
+        height: 44px;
+
+        margin-right: 12px;
+    }
+
+
+    .analytics {
+        min-height: 150px;
+    }
+
+
+    .Move-history {
+        min-height: 120px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+    .Playground-Body {
+
+        grid-template-columns:
+            minmax(165px, 1fr)
+            minmax(0, min(62vh, 50vw))
+            minmax(165px, 1fr);
+
+        column-gap: 10px;
+
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+
+    .Opponent-Box {
+        height: 70px;
+
+        padding: 0 12px;
+    }
+
+
+    .Opponent-Capture_Box {
+        height: 112px;
+
+        padding: 9px 12px;
+    }
+
+
+    .Curr-Play-Stats {
+        padding: 12px;
+    }
+
+
+    .Profile-img {
+        width: 40px;
+        height: 40px;
+
+        margin-right: 10px;
+    }
+
+
+    .rankNum {
+        width: 15px;
+    }
+
+
+    .filesNum {
+        height: 17px;
+    }
+
+
+    .board-container {
+        gap: 3px;
+
+        padding: 6px 6px 4px 4px;
+    }
+
+}
+
+
+/* =========================================================
+   NARROW SCREEN
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+    html,
+    body,
+    #root {
+        overflow: auto;
+    }
+
+
+    .Board-page-container {
+        height: auto;
+
+        min-height: 100vh;
+
+        overflow: visible;
+    }
+
+
+    .Playground-Body {
+        width: 100%;
+
+        height: auto;
+
+        min-height: calc(100vh - 80px);
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 15px;
+
+        overflow: visible;
+    }
+
+
+    .Player-Stats,
+    .Game-Stats {
+        width: 100%;
+
+        height: auto;
+
+        flex-shrink: 0;
+
+        overflow: visible;
+    }
+
+
+    .Opponent-Box,
+    .Opponent-Capture_Box,
+    .Curr-Play-Stats,
+    .analytics,
+    .Move-history {
+        width: 100%;
+
+        max-width: 500px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .Curr-Play-Stats {
+        min-height: 180px;
+    }
+
+
+    .board-container {
+        width: min(94vw, 600px);
+
+        height: auto;
+
+        max-width: 94vw;
+        max-height: none;
+
+        aspect-ratio: 1 / 1;
+
+        flex-shrink: 0;
+
+        margin: 0 auto;
+    }
+
+
+    .Game-Stats {
+        gap: 12px;
+    }
+
+
+    .analytics {
+        height: 220px;
+
+        min-height: 220px;
+    }
+
+
+    .Move-history {
+        height: 180px;
+
+        min-height: 180px;
+    }
+
 }

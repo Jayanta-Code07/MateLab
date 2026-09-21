@@ -3,12 +3,7 @@
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import List from '@mui/material/List'
-import Divider from '@mui/material/Divider'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
-import Typography from '@mui/material/Typography'
+import BrandName from '../BrandName/BrandName'
 import "../HomeStyle/Sidebar.css"
 import BrandIcon from "../assets/HomeAssets/knightBrandIcon.svg"
 import PlayIcon from "../assets/HomeAssets/play-white-sidebar.gif"
@@ -32,7 +27,7 @@ import StatIcon from "../assets/HomeAssets/statistics.png"
 import TournamentIcon from "../assets/HomeAssets/tournament.png"
 import HistoryIcon from "../assets/HomeAssets/history.png"
 import SidebarItem from './SidebarItem'
-import SignUpButton from './SignUpButton'
+import SignUpButtonMan from './SignUpButton'
 import LogginButton from './LogginButton'
 
 const drawerWidth = 200
@@ -46,7 +41,7 @@ export default function Sidebar() {
         }
     ]
 
-    const SideBarContants=[
+    const SideBarContants = [
         {
             icon: PlayIcon,
             staticIcon: PlayIconStatic,
@@ -175,64 +170,47 @@ export default function Sidebar() {
         },
     ]
 
-    const HelpContent={
+    const HelpContent = {
         icon: HelpIcon,
         staticIcon: HelpIconStatic,
         Name: "help & support",
         menues: [
-                {
-                    Name: "Play Online",
-                    icon: PlayIconStatic
-                },
-                {
-                    Name: "Play Bot",
-                    icon: PlayIconStatic
-                },
-                {
-                    Name: "Play Coach",
-                    icon: PlayIconStatic
-                }
-            ]
+            {
+                Name: "Play Online",
+                icon: PlayIconStatic
+            },
+            {
+                Name: "Play Bot",
+                icon: PlayIconStatic
+            },
+            {
+                Name: "Play Coach",
+                icon: PlayIconStatic
+            }
+        ]
     }
 
     const drawer = (
-        <Box role="navigation" sx={{ 
-            width: drawerWidth, 
+        <Box role="navigation" sx={{
+            width: drawerWidth,
             display: "flex",
             flexDirection: "column",
             height: "100vh"
-            }}>
+        }}>
             <List>
                 {BrandContent.map((content, index) => (
-                    <ListItem key={index} disablePadding>
-                        <ListItemButton className="brand-button">
-
-                            <ListItemIcon className="brand-icon-wrapper">
-                                <img
-                                    src={content.icon}
-                                    alt="MateLab"
-                                    className="brand-icon"
-                                />
-                            </ListItemIcon>
-
-                            <ListItemText
-                                primary={content.Name}
-                                className="brand-text"
-                            />
-
-                        </ListItemButton>
-                    </ListItem>
+                    <BrandName key={index} content={content} />
                 ))}
             </List>
             <List>
                 {
-                    SideBarContants.map((content,index)=>(
+                    SideBarContants.map((content, index) => (
                         <SidebarItem key={index} content={content} />
                     ))
                 }
             </List>
-            <Box sx={{ mt:"auto" }} >
-                <SignUpButton />
+            <Box sx={{ mt: "auto" }} >
+                <SignUpButtonMan />
                 <LogginButton />
                 <List>
                     {
@@ -244,22 +222,27 @@ export default function Sidebar() {
     )
 
     return (
-            <Drawer
-                variant="permanent"
-                sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
+        <Drawer
+            slotProps={{
+                paper: {
+                    className: "animate__animated animate__fadeInLeft"
+                }
+            }}
+            variant="permanent"
+            sx={{
+                width: drawerWidth,
+                flexShrink: 0,
 
-                    '& .MuiDrawer-paper': {
-                        width: drawerWidth,
-                        boxSizing: 'border-box',
-                        backgroundColor: "#242421",
-                        scrollbarWidth: "none",
-                    },
-                }}
-                open
-            >
-                {drawer}
-            </Drawer>
+                '& .MuiDrawer-paper': {
+                    width: drawerWidth,
+                    boxSizing: 'border-box',
+                    backgroundColor: "#242421",
+                    scrollbarWidth: "none",
+                },
+            }}
+            open
+        >
+            {drawer}
+        </Drawer>
     )
 }

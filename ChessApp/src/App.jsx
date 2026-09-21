@@ -8,6 +8,7 @@ import { connectws } from './Hooks/ws'
 import { useRef } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import "animate.css"
 
 function App() {
 
@@ -48,10 +49,10 @@ function App() {
     <>
     <Routes>
       <Route path='/' element={ <HomePage /> } />
-      <Route path='/play' element={ <BoardPage AppInfo={AppInfo} /> } />
+      <Route path='/:id/play' element={ <BoardPage AppInfo={AppInfo} /> } />
     </Routes>
     </>
   )
 }
 
-export default App
+export default App;
