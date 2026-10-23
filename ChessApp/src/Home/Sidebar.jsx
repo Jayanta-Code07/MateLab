@@ -27,12 +27,17 @@ import StatIcon from "../assets/HomeAssets/statistics.png"
 import TournamentIcon from "../assets/HomeAssets/tournament.png"
 import HistoryIcon from "../assets/HomeAssets/history.png"
 import SidebarItem from './SidebarItem'
-import SignUpButtonMan from './SignUpButton'
+import SignUpButton from './SignUpButton'
 import LogginButton from './LogginButton'
+import LoggOutButton from './LogOutButton'
+import { useAuth } from '../context/AuthContext'
+
 
 const drawerWidth = 200
 
 export default function Sidebar() {
+
+    let { user, isAuthenticated } = useAuth();
 
     const BrandContent = [
         {
@@ -210,8 +215,15 @@ export default function Sidebar() {
                 }
             </List>
             <Box sx={{ mt: "auto" }} >
-                <SignUpButtonMan />
-                <LogginButton />
+                {
+                    (isAuthenticated) ? <LoggOutButton /> : (
+                        <>
+                            <SignUpButton />
+                            <LogginButton />
+                        </>
+                    )
+
+                }
                 <List>
                     {
                         <SidebarItem content={HelpContent} />

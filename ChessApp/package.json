@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@clerk/react": "^6.16.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^9.3.1",
@@ -18,7 +17,9 @@
     "animate.css": "^4.1.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "react-otp-input": "^3.1.1",
     "react-router-dom": "^7.18.2",
+    "react-toastify": "^11.1.0",
     "socket.io-client": "^4.8.3"
   },
   "devDependencies": {

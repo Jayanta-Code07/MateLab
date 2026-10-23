@@ -1,0 +1,62 @@
+
+.signup-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.signup-form-title{
+    font-family: "Cinzel", serif !important;
+}
+
+.signup-form-text{
+    font-family: Hero-Text-Secondary !important;
+}
+
+.signup-input {
+    width: 16rem !important;
+}
+
+.signup-input .MuiOutlinedInput-root {
+    height: 50px;
+}
+
+.signup-input.MuiTextField-root .MuiOutlinedInput-root {
+    height: 50px;
+}
+
+.signup-input input:-webkit-autofill,
+.signup-input input:-webkit-autofill:hover,
+.signup-input input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 0px transparent inset;
+    -webkit-text-fill-color: white;
+}
+
+.form-signup-btn {
+    text-transform: none !important;
+
+    background: linear-gradient(
+        to bottom,
+        #ff5545 0%,
+        #ff3b30 35%,
+        #f02f24 100%
+    );
+
+    color: white;
+    box-shadow: 0 3px 12px rgba(255, 59, 48, 0.4);
+}
+
+.sform-signup-btn:hover {
+    background: linear-gradient(
+        to bottom,
+        #ff6658 0%,
+        #ff3b30 35%,
+        #ff3024 100%
+    );
+
+    box-shadow:
+        0 0 8px rgba(255, 59, 48, 0.65),
+        0 4px 16px rgba(255, 59, 48, 0.5);
+}
