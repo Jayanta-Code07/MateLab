@@ -61,9 +61,9 @@ body {
     */
 
     grid-template-columns:
-        minmax(220px, 1fr)
-        minmax(0, min(72vh, 52vw))
-        minmax(220px, 1fr);
+    minmax(200px, 1fr)
+    minmax(0, min(82vh, 56vw))
+    minmax(200px, 1fr);
 
     grid-template-rows: minmax(0, 1fr);
 

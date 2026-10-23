@@ -54,7 +54,7 @@ export default function BoardPage({ AppInfo }) {
                     <Box className="Curr-Play-Stats" >
                         <Box className="Curr-Play-Stats-container" >
                             <Typography>Game Info</Typography>
-                            <Divider sx={{ borderColor: "#24364A" }} ></Divider>
+                            <Divider sx={{ borderColor: "#252525" }} ></Divider>
                         </Box>
                     </Box>
                 </Box>
